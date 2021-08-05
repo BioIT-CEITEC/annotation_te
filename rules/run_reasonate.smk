@@ -80,7 +80,7 @@ rule run_must:
 
 rule run_repeatmodel:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: repeatmodel = "annotation_TE" + config["genome_name"] + "/repeatMasker/sequence_index-families.stk"
+    output: repeatmodel = os.path.join("annotation_TE", config["genome_name"], "repeatmodel", "sequence_index-families.stk")
     params: genome = config["genome_name"]
     threads: 20
     log: "logs/run_repeatmodel.log"
@@ -89,7 +89,7 @@ rule run_repeatmodel:
 
 rule run_repMasker:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: repeatmasker = "annotation_TE" + config["genome_name"] + "/repeatMasker/sequence.fasta.out"
+    output: repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repeatMasker", "sequence.fasta.out")
     params: genome = config["genome_name"],
             ref = config["reference"]
     threads: 20
@@ -125,7 +125,7 @@ rule run_sinescan:
 
 rule run_tirvish:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: tirvish = "annotation_TE/" + config["genome_name"] + "/tirvish/result.txt"
+    output: tirvish = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt")
     params: genome = config["genome_name"],
             folder = "tirvish"
     log: "logs/run_tirvish.log"
@@ -134,7 +134,7 @@ rule run_tirvish:
 
 rule run_tirvish_rc:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
-    output: tirvish = "annotation_TE/" + config["genome_name"] + "/tirvish_rc/result.txt"
+    output: tirvish = os.path.join("annotation_TE", config["genome_name"], "tirvish_rc", "result.txt")
     params: genome = config["genome_name"],
             folder = "tirvish_rc"
     log: "logs/run_tirvish_rc.log"
@@ -143,7 +143,7 @@ rule run_tirvish_rc:
 
 rule run_transposonPSI:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: sinescan = os.path.join("annotation_TE",config["genome_name"],"transposonPSI","sequence.fasta.TPSI.allHits.chains.gff3")
+    output: transposonpsi = os.path.join("annotation_TE",config["genome_name"],"transposonPSI","sequence.fasta.TPSI.allHits.chains.gff3")
     params: genome = config["genome_name"]
     log: "logs/run_transposonPSI.log"
     conda: "../wrappers/run_transposonPSI/env.yaml"
@@ -151,27 +151,32 @@ rule run_transposonPSI:
 
 rule run_NCBICDD1000:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: ncbicdd = "annotation_TE/" + config["genome_name"] + "/NCBICDD1000/temp/Result001.txt"
+    output: ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result001.txt")
     params: genome = config["genome_name"]
     log: "logs/run_NCBICDD1000.log"
     conda: "../wrappers/run_NCBICDD1000/env.yaml"
     script: "../wrappers/run_NCBICDD1000/script.py"
 
-rule variant_annotation:
-    input:  index_des = "annotate/sequence.index.des"
-    output: annotated = "annotate/all_variants.annotated.tsv"
-    log:    "logs/variant_annotation.log"
-    threads: 20
-    resources:
-        mem_mb=8000
-    params: ref = expand("{ref_dir}/seq/{ref_name}.fa",ref_dir = reference_directory,ref_name = config["reference"])[0],
-            index = "",
-            ref_name = config["reference"],
-            organism_name = config["organism"],
-            format = config["format_name"],
-            not_use_merged = config["not_use_merged"],
-            CADD_DB_SNVs = expand("{ref_dir}/annot/vep/CADD_scores_DB/whole_genome_SNVs.tsv.gz",ref_dir = reference_directory)[0],
-            CADD_DB_indels = expand("{ref_dir}/annot/vep/CADD_scores_DB/gnomad.genomes.r3.0.indel.tsv.gz",ref_dir = reference_directory)[0],
-            dir_plugins = expand("{ref_dir}/annot/vep/VEP_plugins",ref_dir = reference_directory)[0]
-    conda:  "../wrappers/run_helitronscanner/env.yaml"
-    script: "../wrappers/run_helitronscanner/script.py"
+rule run_finalStage:
+    input:  helitronscan = os.path.join("annotation_TE", config["genome_name"], "helitronScanner", "result.txt"),
+            helitronscan_rc = os.path.join("annotation_TE", config["genome_name"], "helitronScanner_rc", "result.txt"),
+            ltrharvest = os.path.join("annotation_TE", config["genome_name"], "ltrHarvest", "result.txt"),
+            mitefind = os.path.join("annotation_TE", config["genome_name"], "mitefind", "result.txt"),
+            mitefind_rc = os.path.join("annotation_TE", config["genome_name"],"mitefind_rc","result.txt"),
+            mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker", "results", "job", "all.fasta"),
+            mitetracker_rc = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc", "results", "job", "all.fasta"),
+            must = os.path.join("annotation_TE", config["genome_name"], "must", "result.txt"),
+            repeatmodel = os.path.join("annotation_TE", config["genome_name"], "repeatmodel", "sequence_index-families.stk"),
+            repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repeatMasker", "sequence.fasta.out"),
+            sinefind = os.path.join("annotation_TE", config["genome_name"], "sinefind", "sequence-matches.fasta"),
+            sinefind_rc = os.path.join("annotation_TE", config["genome_name"], "sinefind_rc", "sequence-matches.fasta"),
+            sinescan = os.path.join("annotation_TE", config["genome_name"], "sinescan", "result", "sequence.sine.fa"),
+            tirvish = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
+            tirvish_rc = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
+            transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits.chains.gff3"),
+            ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result001.txt")
+    output: final = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3")
+    params: genome = config["genome_name"]
+    log:    "logs/run_finalStage.log"
+    conda:  "../wrappers/run_finalStage/env.yaml"
+    script: "../wrappers/run_finalStage/script.py"

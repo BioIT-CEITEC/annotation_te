@@ -1,0 +1,30 @@
+{
+  "workflow_description": {
+    "name": "annotation_TE",
+    "version": 1.0,
+    "label": "Annotation of Transposable Elements",
+    "type": "genome_annotation",
+    "inputs": "{genome}fasta",
+    "outputs": [
+      "annotation_TE/{genome}.fullLength.gff3",
+      "annotation_TE/{genome}.disjoined.gff3"
+    ]
+  },
+  "general_params": [
+    "genome_name",
+    "sample_name"
+  ],
+  "gui_params": {
+    "primary": {
+      "reference": {
+        "label": "Reference",
+        "type": "enum",
+        "default": "Plant",
+        "list": {
+          "Plant": "GRCh37-p13",
+          "Animal": "GRCh38-p10"
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 ######################################
-# wrapper for rule: run_mitefind
+# wrapper for rule: run_sinescan
 ######################################
 import os
 import sys
@@ -8,15 +8,15 @@ import subprocess
 from snakemake.shell import shell
 
 f = open(snakemake.log.run, 'w')
-f.write("\n##\n## RULE: run_mitefind \n##\n")
-f.write("## Run miteFinderII\n")
+f.write("\n##\n## RULE: run_sinescan \n##\n")
+f.write("## Run SINE Scan\n")
 f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
-command = "cd " + os.path.join("annotation_TE" + snakemake.params.genome + snakemake.params.folder) + " ; " +\
-          "miteFinderII -input " + FASTA + " " +\
-          "-output result.txt"
+command = "cd " + os.path.join("annotation_TE", snakemake.params.genome, "sinescan") + " ; " +\
+          "mkdir result ; mkdir output ; mkdir final ; " +\
+          "sinescan -s 123 -g " + FASTA + " -o output -d result -z final"
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")

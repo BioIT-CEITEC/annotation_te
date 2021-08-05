@@ -15,7 +15,7 @@ f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
-command = "cd annotation_TE" + snakemake.params.genome + "/helitronScanner ; " +\
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,snakemake.params.folder) + " ; " +\
           "helitronscanner scanHead -g " + FASTA + " " +\
           "-bs 0 -o scanHead.txt"
 
@@ -28,7 +28,7 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run HelitronScanner - find helitron tails \n")
 f.close()
 
-command = "cd annotation_TE" + snakemake.params.genome + "/helitronScanner ; " +\
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,snakemake.params.folder) + " ; " +\
           "helitronscanner scanTail -g " + FASTA + " " +\
           "-bs 0 -o scanTail.txt"
 
@@ -41,7 +41,7 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run HelitronScanner - final results \n")
 f.close()
 
-command = "cd annotation_TE" + snakemake.params.genome + "/helitronScanner ; " +\
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,snakemake.params.folder) + " ; " +\
           "helitronscanner pairends -hs scanHead.txt" +\
           "-ts scanTail.txt " +\
           "-o result.txt"

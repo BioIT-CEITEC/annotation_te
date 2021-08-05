@@ -21,8 +21,8 @@
         "type": "enum",
         "default": "Plant",
         "list": {
-          "Plant": "GRCh37-p13",
-          "Animal": "GRCh38-p10"
+          "Plant": "mipsREdat_9.3p_ALL.RepeatMasker.fasta",
+          "Animal": "RMRBSeqs_20181026.fasta"
         }
       }
     }

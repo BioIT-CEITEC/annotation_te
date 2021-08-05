@@ -2,7 +2,7 @@
 rule createProject:
     input:  fasta = config["genome_fasta"]
     output:  seq = "annotation_TE"+config["genome_name"]+"/sequence.fasta",
-             seq_rc = "annotation_TE"+config["genome_name"]+"/sequence.fasta"
+             seq_rc = "annotation_TE"+config["genome_name"]+"/sequence_rc.fasta"
     params: genome = config["genome_name"]
     log: "logs/createProject.log"
     conda: "../wrappers/createProject/env.yaml"
@@ -33,9 +33,37 @@ rule run_ltrHarvest:
     script: "../wrappers/run_ltrHarvest/script.py"
 
 rule run_mitefind:
-    input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    input: seq = "annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    output: mitefind = "annotation_TE" + config["genome_name"] + "/mitefind/result.txt"
+    params: genome = config["genome_name"]
+    log: "logs/run_mitefind.log"
+    conda: "../wrappers/run_mitefind/env.yaml"
+    script: "../wrappers/run_mitefind/script.py"
+
+rule run_mitefind_rc:
+    input: seq_rc = "annotation_TE" + config["genome_name"] + "/sequence_rc.fasta"
+    output: mitefind_rc = "annotation_TE" + config["genome_name"] + "/mitefind_rc/result.txt"
+    params: genome = config["genome_name"]
+    log: "logs/run_mitefind_rc.log"
+    conda: "../wrappers/run_mitefind_rc/env.yaml"
+    script: "../wrappers/run_mitefind_rc/script.py"
+
 rule run_mitetracker:
-    input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    input: seq = "annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    output: mitetracker = "annotation_TE" + config["genome_name"] + "/mitetracker/results/job/all.fasta"
+    params: genome = config["genome_name"]
+    log: "logs/run_mitetracker.log"
+    conda: "../wrappers/run_mitetracker/env.yaml"
+    script: "../wrappers/run_mitetracker/script.py"
+
+rule run_mitetracker_rc:
+    input: seq_rc = "annotation_TE" + config["genome_name"] + "/sequence_rc.fasta"
+    output: mitetracker_rc = "annotation_TE" + config["genome_name"] + "/mitetracker_rc/results/job/all.fasta"
+    params: genome = config["genome_name"]
+    log: "logs/run_mitetracker_rc.log"
+    conda: "../wrappers/run_mitetracker_rc/env.yaml"
+    script: "../wrappers/run_mitetracker_rc/script.py"
+
 rule run_must:
     input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
 rule run_repeatmodel:

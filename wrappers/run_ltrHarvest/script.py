@@ -10,7 +10,7 @@ from snakemake.shell import shell
 f = open(snakemake.log.run, 'w')
 f.write("\n##\n## RULE: run_ltrHarvest \n##\n")
 f.write("## Run ltrHarvest\n")
-f.write("## Create suffix array")
+f.write("## Create suffix array\n")
 f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)

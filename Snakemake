@@ -51,15 +51,5 @@ rule all:
 ##### Modules #####
 
 include: "rules/run_reasonate.smk"
-    "rules/run_ltrHarvest.smk"
-    "rules/run_mitefind.smk"
-    "rules/run_mitetracker.smk"
-    "rules/run_must.smk"
-    "rules/run_repeatmodel.smk"
-    "rules/run_repMasker.smk"
-    "rules/run_sinefind.smk"
-    "rules/run_sinescan.smk"
-    "rules/run_tirvish.smk"
-    "rules/run_transposonPSI.smk"
-    "rules/run_NCBICDD1000.smk"
+
 

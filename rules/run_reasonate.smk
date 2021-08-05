@@ -66,6 +66,12 @@ rule run_mitetracker_rc:
 
 rule run_must:
     input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    output: must = "annotation_TE" + config["genome_name"] + "/must/result.txt"
+    params: genome = config["genome_name"]
+    log: "logs/run_must.log"
+    conda: "../wrappers/run_must/env.yaml"
+    script: "../wrappers/run_must/script.py"
+
 rule run_repeatmodel:
     input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
 rule run_repMasker:
@@ -80,6 +86,11 @@ rule run_transposonPSI:
     input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
 rule run_NCBICDD1000:
     input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    output: must = "annotation_TE" + config["genome_name"] + "/NCBICDD1000/temp/Result001.txt"
+    params: genome = config["genome_name"]
+    log: "logs/run_NCBICDD1000.log"
+    conda: "../wrappers/run_NCBICDD1000/env.yaml"
+    script: "../wrappers/run_NCBICDD1000/script.py"
 
 rule variant_annotation:
     input:  index_des = "annotate/sequence.index.des"

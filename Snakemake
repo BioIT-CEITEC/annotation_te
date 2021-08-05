@@ -50,7 +50,7 @@ rule all:
 
 ##### Modules #####
 
-include: "rules/run_helitronscanner.smk"
+include: "rules/run_reasonate.smk"
     "rules/run_ltrHarvest.smk"
     "rules/run_mitefind.smk"
     "rules/run_mitetracker.smk"

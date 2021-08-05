@@ -12,7 +12,8 @@ f.write("\n##\n## RULE: createProject \n##\n")
 f.write("## Run Reasonate createProject \n")
 f.close()
 
-command = "reasonaTE -mode createProject -projectFolder annotation_TE " +\
+command = "mkdir -p annotation_TE ; " +\
+          "reasonaTE -mode createProject -projectFolder annotation_TE " +\
           "-projectName " + snakemake.params.genome + " " +\
           "-inputFasta " + snakemake.input.fasta
 

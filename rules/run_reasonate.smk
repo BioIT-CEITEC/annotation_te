@@ -12,20 +12,26 @@ rule run_helitronscanner:
     input:  seq = "annotation_TE"+config["genome_name"]+"/sequence.fasta"
     output: helitronscan = "annotation_TE"+config["genome_name"]+"/helitronScanner/result.txt"
     params: genome=config["genome_name"]
-    log: "logs/helitronscanner.log"
-    conda: "../wrappers/helitronscanner/env.yaml"
-    script: "../wrappers/helitronscanner/script.py"
+    log: "logs/run_helitronscanner.log"
+    conda: "../wrappers/run_helitronscanner/env.yaml"
+    script: "../wrappers/run_helitronscanner/script.py"
 
 rule run_helitronscanner_rc:
     input:  seq_rc = "annotation_TE"+config["genome_name"]+"/sequence_rc.fasta"
-    output: helitronscan_rc="annotation_TE" + config["genome_name"] + "/helitronScanner_rc/result.txt"
-    params: genome=config["genome_name"]
-    log: "logs/helitronscanner_rc.log"
-    conda: "../wrappers/helitronscanner_rc/env.yaml"
-    script: "../wrappers/helitronscanner_rc/script.py"
+    output: helitronscan_rc = "annotation_TE" + config["genome_name"] + "/helitronScanner_rc/result.txt"
+    params: genome = config["genome_name"]
+    log: "logs/run_helitronscanner_rc.log"
+    conda: "../wrappers/run_helitronscanner_rc/env.yaml"
+    script: "../wrappers/run_helitronscanner_rc/script.py"
 
 rule run_ltrHarvest:
-    input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    input: seq = "annotation_TE" + config["genome_name"] + "/sequence.fasta"
+    output: ltrharvest = "annotation_TE" + config["genome_name"] + "/ltrHarvest/result.txt"
+    params: genome = config["genome_name"]
+    log: "logs/run_ltrHarvest.log"
+    conda: "../wrappers/run_ltrHarvest/env.yaml"
+    script: "../wrappers/run_ltrHarvest/script.py"
+
 rule run_mitefind:
     input: seq="annotation_TE" + config["genome_name"] + "/sequence.fasta"
 rule run_mitetracker:

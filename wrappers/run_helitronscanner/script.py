@@ -44,7 +44,7 @@ f.close()
 command = "cd annotation_TE" + snakemake.params.genome + "/helitronScanner ; " +\
           "helitronscanner pairends -hs scanHead.txt" +\
           "-ts scanTail.txt " +\
-          "-o " + snakemake.output.helitronscan
+          "-o result.txt"
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")

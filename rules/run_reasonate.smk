@@ -175,7 +175,8 @@ rule run_finalStage:
             tirvish_rc = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
             transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits.chains.gff3"),
             ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result001.txt")
-    output: final = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3")
+    output: inGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3"),
+            outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.renamed.gff3")
     params: genome = config["genome_name"]
     log:    "logs/run_finalStage.log"
     conda:  "../wrappers/run_finalStage/env.yaml"

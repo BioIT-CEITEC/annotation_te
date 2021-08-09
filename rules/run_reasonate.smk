@@ -153,7 +153,7 @@ rule run_NCBICDD1000:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
     output: ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt")
     params: genome = config["genome_name"],
-            dblibrary = expand(os.path.join(TE_db_path,"NCBICDD1000","Selection1000Library{libnum}"), libnum = libnumber)
+            dblibrary = expand(os.path.join(TE_db_path,"ncbicdd","Selection1000Library{libnum}"), libnum = libnumber)
     log: "logs/run_NCBICDD1000_{libnum}.log"
     threads: 10
     conda: "../wrappers/run_NCBICDD1000/env.yaml"

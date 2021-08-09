@@ -10,12 +10,15 @@ GLOBAL_REF_PATH = "/mnt/references/"
 ##### Config processing #####
 # Folders
 #
-reference_path = os.path.join(GLOBAL_REF_PATH,"general","TE_db",config["reference"])
+TE_db_path = os.path.join(GLOBAL_REF_PATH,"general","TE_db")
+
+# NCBICDD libraries
+libnumber = [str(n).zfill(3) for n in range(1,51)]
 
 ##### Target rules #####
 rule all:
-    input:  expand("mapped/{sample}.bam",sample = sample_tab.sample_name),
-            expand("mapped/{sample}.bam.bai", sample = sample_tab.sample_name),
+    input:  inGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3"),
+            outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.renamed.gff3")
 
 ##### Modules #####
 

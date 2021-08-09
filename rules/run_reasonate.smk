@@ -151,9 +151,11 @@ rule run_transposonPSI:
 
 rule run_NCBICDD1000:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result001.txt")
-    params: genome = config["genome_name"]
-    log: "logs/run_NCBICDD1000.log"
+    output: ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt")
+    params: genome = config["genome_name"],
+            dblibrary = expand(os.path.join(TE_db_path,"NCBICDD1000","Selection1000Library{libnum}"), libnum = libnumber)
+    log: "logs/run_NCBICDD1000_{libnum}.log"
+    threads: 10
     conda: "../wrappers/run_NCBICDD1000/env.yaml"
     script: "../wrappers/run_NCBICDD1000/script.py"
 
@@ -174,7 +176,7 @@ rule run_finalStage:
             tirvish = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
             tirvish_rc = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
             transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits.chains.gff3"),
-            ncbicdd = os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result001.txt")
+            ncbicdd = expand(os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt"), libnum=libnumber)
     output: inGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3"),
             outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.renamed.gff3")
     params: genome = config["genome_name"]

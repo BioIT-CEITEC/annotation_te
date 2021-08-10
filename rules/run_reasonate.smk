@@ -74,6 +74,7 @@ rule run_must:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
     output: must = "annotation_TE/" + config["genome_name"] + "/must/result.txt"
     params: genome = config["genome_name"]
+    threads: 10
     log: "logs/run_must.log"
     conda: "../wrappers/run_must/env.yaml"
     script: "../wrappers/run_must/script.py"

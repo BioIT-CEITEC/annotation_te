@@ -12,7 +12,7 @@ f.write("\n##\n## RULE: run_sinefind \n##\n")
 f.write("## Run SINE Finder\n")
 f.close()
 
-OUTPUT = os.path.splitext(os.path.basename(snakemake.input.seq)) + "-matches.fasta"
+OUTPUT = os.path.splitext(os.path.basename(snakemake.input.seq))[0] + "-matches.fasta"
 
 command = "cd " + os.path.join("annotation_TE" + snakemake.params.genome) + " ; " +\
           "sine_finder -V " + os.path.basename(snakemake.input.seq) + " ; " +\

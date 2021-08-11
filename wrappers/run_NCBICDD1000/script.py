@@ -12,9 +12,7 @@ f.write("\n##\n## RULE: run_NCBICDD1000 \n##\n")
 f.write("## Run NCBICDD1000\n")
 f.close()
 
-FASTA = "../" + os.path.basename(snakemake.input.seq)
-
-command = "rpstblastn -query " + FASTA + " " +\
+command = "rpstblastn -query " + snakemake.input.seq + " " +\
     "-num_threads " + str(snakemake.threads) + " " + \
     "-db " + snakemake.params.dblibrary + " " +\
     "-outfmt '7 stitle evalue qstart qend' -evalue 0.01 " +\

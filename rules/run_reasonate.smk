@@ -54,7 +54,7 @@ rule run_mitefind_rc:
 
 rule run_mitetracker:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: mitetracker = "annotation_TE/" + config["genome_name"] + "/mitetracker/results/job/all.fasta"
+    output: mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker","results","job","all.fasta")
     params: genome = config["genome_name"],
             folder = "mitetracker"
     log: run = "logs/run_mitetracker.log"

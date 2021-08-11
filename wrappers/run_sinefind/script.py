@@ -14,8 +14,15 @@ f.close()
 
 OUTPUT = os.path.splitext(os.path.basename(snakemake.input.seq))[0] + "-matches.fasta"
 
-command = "cd " + os.path.join("annotation_TE" + snakemake.params.genome) + " ; " +\
-          "sine_finder -V " + os.path.basename(snakemake.input.seq) + " ; " +\
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome) + " ; " +\
+          "sine_finder -V " + os.path.basename(snakemake.input.seq)
+
+f = open(snakemake.log.run, 'a')
+f.write("## COMMAND: "+command+"\n")
+f.close()
+shell(command)
+
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome) + " ; " +\
           "mv " + OUTPUT + " " + snakemake.params.folder + "/"
 
 f = open(snakemake.log.run, 'a')

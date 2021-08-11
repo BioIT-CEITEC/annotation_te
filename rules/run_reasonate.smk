@@ -92,7 +92,7 @@ rule run_repMasker:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
     output: repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repeatMasker", "sequence.fasta.out")
     params: genome = config["genome_name"],
-            ref = config["reference"]
+            ref = os.path.join(TE_db_path,config["reference"])
     threads: 20
     log: run = "logs/run_repeatMasker.log"
     conda: "../wrappers/run_repeatMasker/env.yaml"

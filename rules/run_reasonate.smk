@@ -170,7 +170,7 @@ rule run_finalStage:
             mitetracker_rc = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc", "results", "job", "all.fasta"),
             must = os.path.join("annotation_TE", config["genome_name"], "must", "result.txt"),
             repeatmodel = os.path.join("annotation_TE", config["genome_name"], "repeatmodel", "sequence_index-families.stk"),
-            repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repeatMasker", "sequence.fasta.out"),
+            repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repMasker", "sequence.fasta.out"),
             sinefind = os.path.join("annotation_TE", config["genome_name"], "sinefind", "sequence-matches.fasta"),
             sinefind_rc = os.path.join("annotation_TE", config["genome_name"], "sinefind_rc", "sequence-matches.fasta"),
             sinescan = os.path.join("annotation_TE", config["genome_name"], "sinescan", "result", "sequence.sine.fa"),

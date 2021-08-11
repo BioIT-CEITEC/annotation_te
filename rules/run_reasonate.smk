@@ -90,7 +90,7 @@ rule run_repeatmodel:
 
 rule run_repMasker:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repeatMasker", "sequence.fasta.out")
+    output: repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repMasker", "sequence.fasta.out")
     params: genome = config["genome_name"],
             ref = os.path.join(TE_db_path,config["reference"])
     threads: 20

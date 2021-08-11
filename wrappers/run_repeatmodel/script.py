@@ -17,9 +17,7 @@ FASTA = "../" + os.path.basename(snakemake.input.seq)
 command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,"repeatmodel") + " ; " +\
           "cp " + FASTA + " " + os.path.basename(snakemake.input.seq) + " ; " +\
           "BuildDatabase -name sequence_index -engine ncbi " + os.path.basename(snakemake.input.seq) + " ; " +\
-          "RepeatModeler -engine ncbi -database sequence_index -pa " + snakemake.threads + " " +\
-          "RepeatMasker -pa " + str(snakemake.threads) + " ; " +\
-          "rm " + os.path.basename(snakemake.input.seq)
+          "RepeatModeler -engine ncbi -database sequence_index -pa " + str(snakemake.threads)
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")

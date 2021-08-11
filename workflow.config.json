@@ -19,10 +19,10 @@
       "reference": {
         "label": "Reference",
         "type": "enum",
-        "default": "Plant",
+        "default": "RepBase",
         "list": {
-          "Plant": "mipsREdat_9.3p_ALL.RepeatMasker.fasta",
-          "Animal": "RMRBSeqs_20181026.fasta"
+          "REdat": "mipsREdat_9.3p_ALL.RepeatMasker.fasta",
+          "RepBase": "RMRB20181026_dfam34.fasta"
         }
       }
     }

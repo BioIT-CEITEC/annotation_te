@@ -14,10 +14,16 @@ f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
-command = "cd annotation_TE" + snakemake.params.genome + "/NCBICDD1000 ; " +\
-          "mkdir temp ; " + \
-          "proteinNCBICDD1000 -fastaFile " + FASTA + " " +\
-          "-resultFolder temp"
+command = "rpstblastn -query " + FASTA + " " +\
+    "-num_threads " + str(snakemake.threads) + " " + \
+    "-db " + snakemake.params.dblibrary + " " +\
+    "-outfmt \"7 stitle evalue qstart qend\" -evalue 0.01 " +\
+    "-out " + snakemake.output.ncbicdd
+
+# command = "cd annotation_TE" + snakemake.params.genome + "/NCBICDD1000 ; " +\
+#           "mkdir temp ; " + \
+#           "proteinNCBICDD1000 -fastaFile " + FASTA + " " +\
+#           "-resultFolder temp"
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")

@@ -18,7 +18,7 @@ command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,"repeatmo
           "cp " + FASTA + " " + os.path.basename(snakemake.input.seq) + " ; " +\
           "BuildDatabase -name sequence_index -engine ncbi " + os.path.basename(snakemake.input.seq) + " ; " +\
           "RepeatModeler -engine ncbi -database sequence_index -pa " + snakemake.threads + " " +\
-          "RepeatMasker -pa " + snakemake.threads + " ; " +\
+          "RepeatMasker -pa " + str(snakemake.threads) + " ; " +\
           "rm " + os.path.basename(snakemake.input.seq)
 
 f = open(snakemake.log.run, 'a')

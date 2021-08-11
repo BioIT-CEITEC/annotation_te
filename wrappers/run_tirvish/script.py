@@ -28,7 +28,8 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run tirvish\n")
 f.close()
 
-command = "gt tirvish -index " + INDEX + " > " + snakemake.output.tirvish
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,snakemake.params.folder) + " ; " +\
+          "gt tirvish -index " + INDEX + " > " + snakemake.output.tirvish
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")

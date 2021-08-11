@@ -12,8 +12,7 @@ f.write("\n##\n## RULE: finalStage \n##\n")
 f.write("## Run Reasonate checkAnnotations \n")
 f.close()
 
-command = "mkdir -p annotation_TE ; " +\
-          "reasonaTE -mode checkAnnotations -projectFolder annotation_TE " +\
+command = "reasonaTE -mode checkAnnotations -projectFolder annotation_TE " +\
           "-projectName " + snakemake.params.genome + " &>> " + snakemake.log.run
 
 f = open(snakemake.log.run, 'a')
@@ -25,8 +24,7 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run Reasonate parseAnnotations \n")
 f.close()
 
-command = "mkdir -p annotation_TE ; " +\
-          "reasonaTE -mode parseAnnotations -projectFolder annotation_TE " +\
+command = "reasonaTE -mode parseAnnotations -projectFolder annotation_TE " +\
           "-projectName " + snakemake.params.genome
 
 f = open(snakemake.log.run, 'a')
@@ -38,8 +36,7 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run Reasonate pipeline \n")
 f.close()
 
-command = "mkdir -p annotation_TE ; " +\
-          "reasonaTE -mode pipeline -projectFolder annotation_TE " +\
+command = "reasonaTE -mode pipeline -projectFolder annotation_TE " +\
           "-projectName " + snakemake.params.genome
 
 f = open(snakemake.log.run, 'a')
@@ -51,8 +48,7 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run Reasonate statistics \n")
 f.close()
 
-command = "mkdir -p annotation_TE ; " +\
-          "reasonaTE -mode statistics -projectFolder annotation_TE " +\
+command = "reasonaTE -mode statistics -projectFolder annotation_TE " +\
           "-projectName " + snakemake.params.genome
 
 f = open(snakemake.log.run, 'a')
@@ -64,8 +60,7 @@ f = open(snakemake.log.run, 'a')
 f.write("## Run Reasonate sequenceRenamer \n")
 f.close()
 
-command = "mkdir -p annotation_TE ; " +\
-          "reasonaTE -mode sequenceRenamer -seqNames " + sequence_heads + " " +\
+command = "reasonaTE -mode sequenceRenamer -seqNames " + sequence_heads + " " +\
           "-inputGFF " + snakemake.output.inGFF + " " + \
           "-outputGFF " + snakemake.output.outGFF
 

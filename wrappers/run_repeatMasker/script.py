@@ -14,9 +14,9 @@ f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
-command = "cd annotation_TE" + snakemake.params.genome + "/repMasker ; " +\
+command = "cd annotation_TE/" + snakemake.params.genome + "/repMasker ; " +\
           "ln -s " + FASTA + " " +\
-          "RepeatMasker -pa " + snakemake.threads + " " +\
+          "RepeatMasker -pa " + str(snakemake.threads) + " " +\
           "-lib " + snakemake.params.ref + " " + os.path.basename(snakemake.input.seq)
 
 f = open(snakemake.log.run, 'a')

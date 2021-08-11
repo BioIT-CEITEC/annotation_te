@@ -15,7 +15,7 @@ f.close()
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
 command = "cd " + os.path.join("annotation_TE", snakemake.params.genome, "sinescan") + " ; " +\
-          "mkdir result ; mkdir output ; mkdir final ; " +\
+          "mkdir -p result ; mkdir -p output ; mkdir -p final ; " +\
           "sinescan -s 123 -g " + FASTA + " -o output -d result -z final"
 
 f = open(snakemake.log.run, 'a')

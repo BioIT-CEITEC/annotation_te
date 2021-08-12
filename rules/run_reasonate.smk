@@ -2,8 +2,7 @@
 rule createProject:
     input:  fasta = config["genome_fasta"]
     output:  seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta"),
-             seq_rc = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta"),
-             heads = os.path.join("annotation_TE",config["genome_name"],"sequence_heads.txt")
+             seq_rc = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
     params: genome = config["genome_name"]
     log: run = "logs/createProject.log"
     conda: "../wrappers/createProject/env.yaml"
@@ -181,8 +180,7 @@ rule run_finalStage:
             tirvish = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
             tirvish_rc = os.path.join("annotation_TE", config["genome_name"], "tirvish_rc", "result.txt"),
             transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits"),
-            ncbicdd = expand(os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt"), libnum=libnumber),
-            heads = os.path.join("annotation_TE",config["genome_name"],"sequence_heads.txt")
+            ncbicdd = expand(os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt"), libnum=libnumber)
     output: outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3")
     params: genome = config["genome_name"]
     log:    run = "logs/run_finalStage.log"

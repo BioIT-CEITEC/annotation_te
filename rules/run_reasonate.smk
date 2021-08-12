@@ -10,7 +10,7 @@ rule createProject:
 
 rule run_helitronscanner:
     input:  seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: helitronscan = "annotation_TE/"+config["genome_name"]+"/helitronScanner/result.txt"
+    output: helitronscan = os.path.join("annotation_TE", config["genome_name"], "helitronScanner","result.txt")
     params: genome = config["genome_name"],
             folder = "helitronScanner"
     log: run = "logs/run_helitronscanner.log"
@@ -19,7 +19,7 @@ rule run_helitronscanner:
 
 rule run_helitronscanner_rc:
     input:  seq = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
-    output: helitronscan = "annotation_TE/" + config["genome_name"] + "/helitronScanner_rc/result.txt"
+    output: helitronscan = os.path.join("annotation_TE", config["genome_name"], "helitronScanner_rc","result.txt")
     params: genome = config["genome_name"],
             folder = "helitronScanner_rc"
     log: run = "logs/run_helitronscanner_rc.log"
@@ -28,7 +28,7 @@ rule run_helitronscanner_rc:
 
 rule run_ltrHarvest:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: ltrharvest = "annotation_TE/" + config["genome_name"] + "/ltrHarvest/result.txt"
+    output: ltrharvest = os.path.join("annotation_TE", config["genome_name"], "ltrHarvest","result.txt")
     params: genome = config["genome_name"]
     log: run = "logs/run_ltrHarvest.log"
     conda: "../wrappers/run_ltrHarvest/env.yaml"
@@ -36,7 +36,7 @@ rule run_ltrHarvest:
 
 rule run_mitefind:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: mitefind = "annotation_TE/" + config["genome_name"] + "/mitefind/result.txt"
+    output: mitefind = os.path.join("annotation_TE", config["genome_name"], "mitefind","result.txt")
     params: genome = config["genome_name"],
             folder = "mitefind"
     log: run = "logs/run_mitefind.log"
@@ -45,7 +45,7 @@ rule run_mitefind:
 
 rule run_mitefind_rc:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
-    output: mitefind = "annotation_TE/" + config["genome_name"] + "/mitefind_rc/result.txt"
+    output: mitefind = os.path.join("annotation_TE", config["genome_name"], "mitefind_rc","result.txt")
     params: genome = config["genome_name"],
             folder= "mitefind_rc"
     log: run = "logs/run_mitefind_rc.log"
@@ -63,7 +63,7 @@ rule run_mitetracker:
 
 rule run_mitetracker_rc:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
-    output: mitetracker = "annotation_TE/" + config["genome_name"] + "/mitetracker_rc/results/job/all.fasta"
+    output: mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc","results","job","all.fasta")
     params: genome = config["genome_name"],
             folder = "mitetracker_rc"
     log: run = "logs/run_mitetracker_rc.log"
@@ -72,7 +72,7 @@ rule run_mitetracker_rc:
 
 rule run_must:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: must = "annotation_TE/" + config["genome_name"] + "/must/result.txt"
+    output: must = os.path.join("annotation_TE", config["genome_name"], "must","result.txt")
     params: genome = config["genome_name"]
     threads: 10
     log: run = "logs/run_must.log"

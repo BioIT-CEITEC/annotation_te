@@ -14,7 +14,7 @@ f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
-command = "cd annotation_TE/" + snakemake.params.genome + "/mitetracker ; " +\
+command = "cd " + os.path.join("annotation_TE" + snakemake.params.genome + snakemake.params.folder) + " ; " +\
           "mkdir -p results ; " + \
           "mitetracker -g " + FASTA + " " +\
           "-j job -w 3"

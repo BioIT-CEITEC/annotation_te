@@ -42,7 +42,7 @@ f.write("## Run HelitronScanner - final results \n")
 f.close()
 
 command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,snakemake.params.folder) + " ; " +\
-          "helitronscanner pairends -hs scanHead.txt" +\
+          "helitronscanner pairends -hs scanHead.txt " +\
           "-ts scanTail.txt " +\
           "-o result.txt"
 

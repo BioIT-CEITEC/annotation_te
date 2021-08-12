@@ -2,7 +2,8 @@
 rule createProject:
     input:  fasta = config["genome_fasta"]
     output:  seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta"),
-             seq_rc = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
+             seq_rc = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta"),
+             heads = os.path.join("annotation_TE",config["genome_name"],"sequence_heads.txt")
     params: genome = config["genome_name"]
     log: run = "logs/createProject.log"
     conda: "../wrappers/createProject/env.yaml"
@@ -54,18 +55,20 @@ rule run_mitefind_rc:
 
 rule run_mitetracker:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker","results","job","all.fasta")
+    output: mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker","results","job","all.gff3")
     params: genome = config["genome_name"],
             folder = "mitetracker"
+    threads: 3
     log: run = "logs/run_mitetracker.log"
     conda: "../wrappers/run_mitetracker/env.yaml"
     script: "../wrappers/run_mitetracker/script.py"
 
 rule run_mitetracker_rc:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
-    output: mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc","results","job","all.fasta")
+    output: mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc","results","job","all.gff3")
     params: genome = config["genome_name"],
             folder = "mitetracker_rc"
+    threads: 3
     log: run = "logs/run_mitetracker_rc.log"
     conda: "../wrappers/run_mitetracker/env.yaml"
     script: "../wrappers/run_mitetracker/script.py"
@@ -109,7 +112,7 @@ rule run_sinefind:
 
 rule run_sinefind_rc:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence_rc.fasta")
-    output: sinefind = os.path.join("annotation_TE",config["genome_name"],"sinefind_rc","sequence-matches.fasta")
+    output: sinefind = os.path.join("annotation_TE",config["genome_name"],"sinefind_rc","sequence_rc-matches.fasta")
     params: genome = config["genome_name"],
             folder = "sinefind_rc"
     log: run = "logs/run_sinefind_rc.log"
@@ -144,7 +147,7 @@ rule run_tirvish_rc:
 
 rule run_transposonPSI:
     input: seq = os.path.join("annotation_TE",config["genome_name"],"sequence.fasta")
-    output: transposonpsi = os.path.join("annotation_TE",config["genome_name"],"transposonPSI","sequence.fasta.TPSI.allHits.chains.gff3")
+    output: transposonpsi = os.path.join("annotation_TE",config["genome_name"],"transposonPSI","sequence.fasta.TPSI.allHits")
     params: genome = config["genome_name"]
     log: run = "logs/run_transposonPSI.log"
     conda: "../wrappers/run_transposonPSI/env.yaml"
@@ -167,18 +170,19 @@ rule run_finalStage:
             ltrharvest = os.path.join("annotation_TE", config["genome_name"], "ltrHarvest", "result.txt"),
             mitefind = os.path.join("annotation_TE", config["genome_name"], "mitefind", "result.txt"),
             mitefind_rc = os.path.join("annotation_TE", config["genome_name"],"mitefind_rc","result.txt"),
-            mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker", "results", "job", "all.fasta"),
-            mitetracker_rc = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc", "results", "job", "all.fasta"),
+            mitetracker = os.path.join("annotation_TE", config["genome_name"], "mitetracker", "results", "job", "all.gff3"),
+            mitetracker_rc = os.path.join("annotation_TE", config["genome_name"], "mitetracker_rc", "results", "job", "all.gff3"),
             must = os.path.join("annotation_TE", config["genome_name"], "must", "result.txt"),
             repeatmodel = os.path.join("annotation_TE", config["genome_name"], "repeatmodel", "sequence_index-families.stk"),
             repeatmasker = os.path.join("annotation_TE", config["genome_name"], "repMasker", "sequence.fasta.out"),
             sinefind = os.path.join("annotation_TE", config["genome_name"], "sinefind", "sequence-matches.fasta"),
-            sinefind_rc = os.path.join("annotation_TE", config["genome_name"], "sinefind_rc", "sequence-matches.fasta"),
+            sinefind_rc = os.path.join("annotation_TE", config["genome_name"], "sinefind_rc", "sequence_rc-matches.fasta"),
             sinescan = os.path.join("annotation_TE", config["genome_name"], "sinescan", "result", "sequence.sine.fa"),
             tirvish = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
-            tirvish_rc = os.path.join("annotation_TE", config["genome_name"], "tirvish", "result.txt"),
-            transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits.chains.gff3"),
-            ncbicdd = expand(os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt"), libnum=libnumber)
+            tirvish_rc = os.path.join("annotation_TE", config["genome_name"], "tirvish_rc", "result.txt"),
+            transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits"),
+            ncbicdd = expand(os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt"), libnum=libnumber),
+            heads = os.path.join("annotation_TE",config["genome_name"],"sequence_heads.txt")
     output: inGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3"),
             outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.renamed.gff3")
     params: genome = config["genome_name"]

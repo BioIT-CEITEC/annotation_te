@@ -40,6 +40,7 @@ command = "mkdir -p annotation_TE ; " +\
           "mkdir -p annotation_TE/" + snakemake.params.genome + "/tirvish ; " +\
           "mkdir -p annotation_TE/" + snakemake.params.genome + "/transposonCandB ; " +\
           "mkdir -p annotation_TE/" + snakemake.params.genome + "/transposonCandE ; " +\
+          """grep -e '>' """ + snakemake.input.fasta + """ | awk '{{print $1\"\\t\"$1}}' > annotation_TE/""" + snakemake.params.genome + """/sequence_heads.txt ; """ +\
           "cp " + snakemake.input.fasta + " annotation_TE/" + snakemake.params.genome + "/sequence.fasta ; " +\
           "seqkit seq -rpv -t dna -o annotation_TE/" + snakemake.params.genome + "/sequence_rc.fasta " + snakemake.input.fasta
 

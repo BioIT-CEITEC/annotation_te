@@ -15,11 +15,23 @@ f.close()
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
 command = "cd " + os.path.join("annotation_TE", snakemake.params.genome, "transposonPSI") + " ; " +\
-          "mkdir -p temp ; mkdir -p result ; " +\
+          "mkdir -p temp ; mkdir -p result ; "
+
+f = open(snakemake.log.run, 'a')
+f.write("## COMMAND: "+command+"\n")
+f.close()
+shell(command)
+
+command = "cd " + os.path.join("annotation_TE", snakemake.params.genome, "transposonPSI") + " ; " +\
           "transposonPSI -fastaFile " + FASTA + " " +\
           "-resultFolder result -tempFolder temp -mode nuc"
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")
 f.close()
+shell(command)
+
+command = "cd " + os.path.join("annotation_TE", snakemake.params.genome, "transposonPSI") + " ; " +\
+          "mv result/* ./"
+
 shell(command)

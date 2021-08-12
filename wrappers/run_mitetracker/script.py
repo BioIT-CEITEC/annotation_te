@@ -14,10 +14,10 @@ f.close()
 
 FASTA = "../" + os.path.basename(snakemake.input.seq)
 
-command = "cd " + os.path.join("annotation_TE" + snakemake.params.genome + snakemake.params.folder) + " ; " +\
+command = "cd " + os.path.join("annotation_TE",snakemake.params.genome,snakemake.params.folder) + " ; " +\
           "mkdir -p results ; " + \
           "mitetracker -g " + FASTA + " " +\
-          "-j job -w 3"
+          "-j job -w " + str(snakemake.threads) + " &>> ../../../" + snakemake.log.run
 
 f = open(snakemake.log.run, 'a')
 f.write("## COMMAND: "+command+"\n")

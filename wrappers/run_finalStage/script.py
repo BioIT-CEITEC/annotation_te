@@ -55,16 +55,3 @@ f = open(snakemake.log.run, 'a')
 f.write("\n## COMMAND: "+command+"\n")
 f.close()
 shell(command)
-
-f = open(snakemake.log.run, 'a')
-f.write("## Run Reasonate sequenceRenamer \n")
-f.close()
-
-command = "reasonaTE -mode sequenceRenamer -seqNames " + snakemake.input.heads + " " +\
-          "-inputGFF " + snakemake.output.inGFF + " " + \
-          "-outputGFF " + snakemake.output.outGFF
-
-f = open(snakemake.log.run, 'a')
-f.write("\n## COMMAND: "+command+"\n")
-f.close()
-shell(command)

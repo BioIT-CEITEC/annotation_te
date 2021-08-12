@@ -183,8 +183,7 @@ rule run_finalStage:
             transposonpsi = os.path.join("annotation_TE", config["genome_name"], "transposonPSI", "sequence.fasta.TPSI.allHits"),
             ncbicdd = expand(os.path.join("annotation_TE", config["genome_name"], "NCBICDD1000", "temp", "Result{libnum}.txt"), libnum=libnumber),
             heads = os.path.join("annotation_TE",config["genome_name"],"sequence_heads.txt")
-    output: inGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3"),
-            outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.renamed.gff3")
+    output: outGFF = os.path.join("annotation_TE", config["genome_name"], "finalResults", "FinalAnnotations_Transposons.gff3")
     params: genome = config["genome_name"]
     log:    run = "logs/run_finalStage.log"
     conda:  "../wrappers/run_finalStage/env.yaml"

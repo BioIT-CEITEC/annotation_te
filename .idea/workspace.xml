@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9cb704ad-e2ff-4be6-9204-7299ad957881" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1wInPp4NeQWpAHzX3dNBWT4dBqf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chipseq_wide_peack" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\annotation_te\wrappers" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9cb704ad-e2ff-4be6-9204-7299ad957881" name="Changes" comment="" />
+      <created>1628154949477</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628154949477</updated>
+      <workItem from="1628154950800" duration="22007000" />
+      <workItem from="1628486967397" duration="11983000" />
+      <workItem from="1628579619022" duration="3159000" />
+      <workItem from="1628744778086" duration="16309000" />
+      <workItem from="1629699549154" duration="15000" />
+      <workItem from="1630990869703" duration="1445000" />
+    </task>
+    <task id="LOCAL-00001" summary="setting up Git">
+      <created>1628155213200</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628155213200</updated>
+    </task>
+    <task id="LOCAL-00002" summary="setting up Git">
+      <created>1628155242115</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628155242115</updated>
+    </task>
+    <task id="LOCAL-00003" summary="helitronscanner rules">
+      <created>1628163289343</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628163289343</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ltrHarvest rules">
+      <created>1628164998254</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1628164998254</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ltrHarvest, mitefind, mitetracker rules">
+      <created>1628166813821</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1628166813821</updated>
+    </task>
+    <task id="LOCAL-00006" summary="must, NCBICDD1000 rules">
+      <created>1628169013302</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1628169013302</updated>
+    </task>
+    <task id="LOCAL-00007" summary="all rules">
+      <created>1628177897965</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1628177897965</updated>
+    </task>
+    <task id="LOCAL-00008" summary="finalStage rule">
+      <created>1628179258993</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1628179258993</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update ncbicdd rule">
+      <created>1628503001874</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1628503001874</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update ncbicdd rule">
+      <created>1628508907442</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1628508907442</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update json">
+      <created>1628580015974</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1628580015974</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update must">
+      <created>1628584295824</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1628584295824</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update mitetracker">
+      <created>1628745497061</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1628745497062</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update scripts">
+      <created>1628762037486</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1628762037486</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update scripts">
+      <created>1628764168599</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1628764168599</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update scripts">
+      <created>1628764321189</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1628764321189</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update scripts">
+      <created>1628767356631</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1628767356631</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="setting up Git" />
+    <MESSAGE value="helitronscanner rules" />
+    <MESSAGE value="ltrHarvest rules" />
+    <MESSAGE value="ltrHarvest, mitefind, mitetracker rules" />
+    <MESSAGE value="must, NCBICDD1000 rules" />
+    <MESSAGE value="all rules" />
+    <MESSAGE value="finalStage rule" />
+    <MESSAGE value="update ncbicdd rule" />
+    <MESSAGE value="update json" />
+    <MESSAGE value="update must" />
+    <MESSAGE value="update mitetracker" />
+    <MESSAGE value="update scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scripts" />
+  </component>
+</project>
